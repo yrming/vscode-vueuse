@@ -3,6 +3,13 @@
   "displayName": "VueUse",
   "description": "Browse VueUse Documentation in VS Code",
   "version": "0.0.1",
+  "publisher": "YRM",
+  "license": "MIT",
+  "icon": "resources/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yrming/vscode-vueuse"
+  },
   "engines": {
     "vscode": "^1.72.0"
   },
@@ -10,16 +17,28 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vueuse.helloWorld"
+    "onView:vueuse.home"
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "vueuse.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vueuse",
+          "title": "VueUse",
+          "icon": "resources/logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "vueuse": [
+        {
+          "id": "vueuse.home",
+          "type": "webview",
+          "name": "VueUse"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
