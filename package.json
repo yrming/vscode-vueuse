@@ -42,6 +42,8 @@
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
+    "dev:webview": "cd webview && pnpm run dev",
+    "build:webview": "cd webview && pnpm run build",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
