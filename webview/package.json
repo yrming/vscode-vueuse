@@ -13,8 +13,7 @@
   },
   "dependencies": {
     "@vscode/webview-ui-toolkit": "^1.1.0",
-    "vue": "^3.2.38",
-    "vue-router": "^4.1.5"
+    "vue": "^3.2.38"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
