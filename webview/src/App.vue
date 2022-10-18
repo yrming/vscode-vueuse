@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { provideVSCodeDesignSystem, vsCodeTextField } from '@vscode/webview-ui-toolkit';
+
+provideVSCodeDesignSystem().register(vsCodeTextField());
 </script>
 
 <template>
-  <RouterView />
+  <main class="my-1">
+    <vscode-text-field class="w-full" autofocus placeholder="Search"></vscode-text-field>
+  </main>
 </template>
-
-<style scoped></style>
