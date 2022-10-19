@@ -24,8 +24,8 @@ export class HomeViewProvider implements WebviewViewProvider {
   }
 
   private _getWebviewContent(webview: Webview, extensionUri: Uri) {
-    const stylesUri = getUri(webview, extensionUri, ['webview', 'build', 'assets', 'index.css'])
-    const scriptUri = getUri(webview, extensionUri, ['webview', 'build', 'assets', 'index.js'])
+    const stylesUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'index.css'])
+    const scriptUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'index.js'])
 
     return /*html*/ `
       <!DOCTYPE html>
