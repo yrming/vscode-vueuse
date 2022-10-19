@@ -6,6 +6,8 @@ provideVSCodeDesignSystem().register(vsCodeTextField());
 
 <template>
   <main class="my-1">
-    <vscode-text-field class="w-full" autofocus placeholder="Search"></vscode-text-field>
+    <vscode-text-field class="w-full" autofocus placeholder="Search">
+      <span slot="start" class="i-carbon-search"></span>
+    </vscode-text-field>
   </main>
 </template>
