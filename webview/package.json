@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@vscode/webview-ui-toolkit": "^1.1.0",
-    "@vueuse/metadata": "^9.3.1",
+    "@vueuse/metadata": "^9.4.0",
+    "fuse.js": "^6.6.2",
     "vue": "^3.2.38"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "@types/node": "^16.11.56",
     "@types/vscode-webview": "^1.57.0",
     "@unocss/preset-icons": "^0.45.30",
+    "@unocss/transformer-directives": "^0.45.30",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "@vue/eslint-config-prettier": "^7.0.0",

@@ -7,6 +7,7 @@ specifiers:
   '@types/node': ^16.11.56
   '@types/vscode-webview': ^1.57.0
   '@unocss/preset-icons': ^0.45.30
+  '@unocss/transformer-directives': ^0.45.30
   '@vitejs/plugin-vue': ^3.0.3
   '@vitejs/plugin-vue-jsx': ^2.0.1
   '@vscode/webview-ui-toolkit': ^1.1.0
@@ -14,9 +15,10 @@ specifiers:
   '@vue/eslint-config-typescript': ^11.0.0
   '@vue/test-utils': ^2.0.2
   '@vue/tsconfig': ^0.1.3
-  '@vueuse/metadata': ^9.3.1
+  '@vueuse/metadata': ^9.4.0
   eslint: ^8.22.0
   eslint-plugin-vue: ^9.3.0
+  fuse.js: ^6.6.2
   jsdom: ^20.0.0
   npm-run-all: ^4.1.5
   prettier: ^2.7.1
@@ -29,7 +31,8 @@ specifiers:
 
 dependencies:
   '@vscode/webview-ui-toolkit': 1.1.0
-  '@vueuse/metadata': 9.3.1
+  '@vueuse/metadata': 9.4.0
+  fuse.js: 6.6.2
   vue: 3.2.41
 
 devDependencies:
@@ -39,6 +42,7 @@ devDependencies:
   '@types/node': 16.11.66
   '@types/vscode-webview': 1.57.0
   '@unocss/preset-icons': 0.45.30
+  '@unocss/transformer-directives': 0.45.30
   '@vitejs/plugin-vue': 3.1.2_vite@3.1.8+vue@3.2.41
   '@vitejs/plugin-vue-jsx': 2.0.1_vite@3.1.8+vue@3.2.41
   '@vue/eslint-config-prettier': 7.0.0_znq2sm4m5bonjw4qqm6mwhbe2q
@@ -859,6 +863,13 @@ packages:
       css-tree: 2.2.1
     dev: true
 
+  /@unocss/transformer-directives/0.45.30:
+    resolution: {integrity: sha512-4WTmKsa9sELHwMNc6l2X203asx7xldEX4PhAdEc13yKQk25Sqp/7dwcW9DwXwK82vHqvr5iPxOE/2Z8dHkL8xQ==}
+    dependencies:
+      '@unocss/core': 0.45.30
+      css-tree: 2.2.1
+    dev: true
+
   /@unocss/transformer-variant-group/0.45.29:
     resolution: {integrity: sha512-nTP50TXRzPMbbWuKjDENMCsjkMFFk2hUTGYw4RYEPlT1AGRL2mUr67jPRNBRRhcp6Ghl4z/wwfOA97wSA0WOjg==}
     dependencies:
@@ -1113,8 +1124,8 @@ packages:
       '@types/node': 16.11.66
     dev: true
 
-  /@vueuse/metadata/9.3.1:
-    resolution: {integrity: sha512-G1BPhtx3OHaL/y4OZBofh6Xt02G1VA9PuOO8nac9sTKMkMqfyez5VfkF3D9GUjSRNO7cVWyH4rceeGXfr2wdMg==}
+  /@vueuse/metadata/9.4.0:
+    resolution: {integrity: sha512-7GKMdGAsJyQJl35MYOz/RDpP0FxuiZBRDSN79QIPbdqYx4Sd0sVTnIC68KJ6Oln0t0SouvSUMvRHuno216Ud2Q==}
     dev: false
 
   /abab/2.0.6:
@@ -2097,6 +2108,11 @@ packages:
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
