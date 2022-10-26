@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import { provideVSCodeDesignSystem, vsCodeCheckbox, vsCodeDivider } from '@vscode/webview-ui-toolkit'
 import { categoryNames, coreCategoryNames, addonCategoryNames, functions } from '@vueuse/metadata'
 import Fuse from 'fuse.js'
-import { renderMarkdown } from './utils/common'
+import { renderMarkdown, styledName } from './utils/common'
 
 provideVSCodeDesignSystem().register(vsCodeCheckbox(), vsCodeDivider())
 
@@ -130,7 +130,7 @@ const result = computed(() => {
     </div>
     <div class="my-2 flex items-center text-sm">
       <div class="fn-name">
-        <div class="flex-shrink-0">{{ fn.name }}</div>
+        <div class="flex-shrink-0" v-html="styledName(fn.name)"></div>
       </div>
       <div class="flex-shrink-0">&nbsp;-&nbsp;</div>
       <div class="op-87" v-html="renderMarkdown(fn.description)"></div>
