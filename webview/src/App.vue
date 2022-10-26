@@ -118,7 +118,7 @@ const result = computed(() => {
   <vscode-divider></vscode-divider>
   <div class="flex children:my-auto p-2">
     <i class="i-carbon-search mr-2 op-50 scale-120"></i>
-    <input class="search-input" type="text" role="search" placeholder="Search..." autofocus v-model="currentSearch">
+    <input class="search-input" type="text" role="search" placeholder="Search..." v-model="currentSearch">
   </div>
   <vscode-divider></vscode-divider>
 
@@ -130,7 +130,8 @@ const result = computed(() => {
     </div>
     <div class="my-2 flex items-center text-sm">
       <div class="fn-name">
-        <div class="flex-shrink-0" v-html="styledName(fn.name)"></div>
+        <span v-html="styledName(fn.name)"></span>
+        <i v-if="fn.external" class="i-carbon-launch opacity-80 text-xs ml-1" />
       </div>
       <div class="flex-shrink-0">&nbsp;-&nbsp;</div>
       <div class="op-87" v-html="renderMarkdown(fn.description)"></div>
@@ -162,6 +163,6 @@ const result = computed(() => {
 }
 
 .fn-name {
-  @apply cursor-pointer bg-gray-400/5 px-1.5 py-0.5 rounded text-#3eaf7c hover-text-#33a06f transition-color-2;
+  @apply flex items-center flex-shrink-0 cursor-pointer bg-gray-400/5 px-1.5 py-0.5 rounded text-#3eaf7c hover-text-#33a06f transition-color-2;
 }
 </style>
