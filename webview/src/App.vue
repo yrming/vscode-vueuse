@@ -62,6 +62,17 @@ function goDoc(fn: VueUseFunction) {
     text: fn,
   });
 }
+function getLink(fn: VueUseFunction) {
+  if (fn.external) {
+    return {
+      href: fn.external,
+      target: '_blank',
+    }
+  }
+  return {
+    href: `/${fn.package}/${fn.name}/`,
+  }
+}
 
 const items = computed(() => {
   let fn = functions.filter(i => !i.internal)
@@ -139,10 +150,11 @@ const result = computed(() => {
       {{ fn.category }}
     </div>
     <div class="my-2 flex items-center text-sm">
-      <div class="fn-name" @click="goDoc(fn)">
+      <a v-bind="getLink(fn)" class="fn-name" @click="goDoc(fn)"
+        :class="fn.deprecated ? 'line-through !decoration-solid' : ''">
         <span v-html="styledName(fn.name)"></span>
         <i v-if="fn.external" class="i-carbon-launch opacity-80 text-xs ml-1" />
-      </div>
+      </a>
       <div class="flex-shrink-0">&nbsp;-&nbsp;</div>
       <div class="op-87" v-html="renderMarkdown(fn.description)"></div>
     </div>
@@ -173,6 +185,6 @@ const result = computed(() => {
 }
 
 .fn-name {
-  @apply flex items-center flex-shrink-0 cursor-pointer bg-gray-400/5 px-1.5 py-0.5 rounded text-#3eaf7c hover-text-#33a06f transition-color-2;
+  @apply flex items-center flex-shrink-0 cursor-pointer bg-gray-400/5 px-1.5 py-0.5 rounded text-#3eaf7c hover-text-#33a06f transition-color-2 decoration-none outline-none;
 }
 </style>
