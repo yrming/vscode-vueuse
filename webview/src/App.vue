@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { provideVSCodeDesignSystem, vsCodeCheckbox, vsCodeDivider } from '@vscode/webview-ui-toolkit'
-import { categoryNames, coreCategoryNames, addonCategoryNames, functions } from '@vueuse/metadata'
+import { categoryNames, coreCategoryNames, addonCategoryNames, functions, type VueUseFunction } from '@vueuse/metadata'
 import Fuse from 'fuse.js'
 import { renderMarkdown, styledName } from './utils/common'
+import { vscode } from './utils/vscode'
 
 provideVSCodeDesignSystem().register(vsCodeCheckbox(), vsCodeDivider())
 
@@ -51,6 +52,15 @@ function toggleHasComponent() {
 }
 function toggleHasDirective() {
   hasDirective.value = !hasDirective.value
+}
+function goDoc(fn: VueUseFunction) {
+  if (fn.external) {
+    return
+  }
+  vscode.postMessage({
+    command: "showDoc",
+    text: fn,
+  });
 }
 
 const items = computed(() => {
@@ -129,7 +139,7 @@ const result = computed(() => {
       {{ fn.category }}
     </div>
     <div class="my-2 flex items-center text-sm">
-      <div class="fn-name">
+      <div class="fn-name" @click="goDoc(fn)">
         <span v-html="styledName(fn.name)"></span>
         <i v-if="fn.external" class="i-carbon-launch opacity-80 text-xs ml-1" />
       </div>

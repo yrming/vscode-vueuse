@@ -1,10 +1,12 @@
+import { VueUseFunction } from '@vueuse/metadata'
 import {
   CancellationToken,
   Uri,
   Webview,
   WebviewView,
   WebviewViewProvider,
-  WebviewViewResolveContext
+  WebviewViewResolveContext,
+  window
 } from 'vscode'
 import { getUri } from '../utils/getUri'
 
@@ -21,13 +23,14 @@ export class HomeViewProvider implements WebviewViewProvider {
       localResourceRoots: [this.extensionUri]
     }
     webviewView.webview.html = this._getWebviewContent(webviewView.webview, this.extensionUri)
+    this._setWebviewMessageListener(webviewView.webview)
   }
 
   private _getWebviewContent(webview: Webview, extensionUri: Uri) {
     const stylesUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'index.css'])
     const scriptUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'index.js'])
 
-    return /*html*/ `
+    return `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -42,5 +45,17 @@ export class HomeViewProvider implements WebviewViewProvider {
         </body>
       </html>
     `
+  }
+
+  private _setWebviewMessageListener(webview: Webview) {
+    webview.onDidReceiveMessage((message: any) => {
+      const command = message.command
+      const text = message.text as VueUseFunction
+
+      switch (command) {
+        case 'showDoc':
+          return
+      }
+    })
   }
 }
