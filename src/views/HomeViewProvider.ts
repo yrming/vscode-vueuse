@@ -1,12 +1,12 @@
 import { VueUseFunction } from '@vueuse/metadata'
 import {
   CancellationToken,
+  commands,
   Uri,
   Webview,
   WebviewView,
   WebviewViewProvider,
-  WebviewViewResolveContext,
-  window
+  WebviewViewResolveContext
 } from 'vscode'
 import { getUri } from '../utils/getUri'
 
@@ -54,6 +54,9 @@ export class HomeViewProvider implements WebviewViewProvider {
 
       switch (command) {
         case 'showDoc':
+          const fnDocPath = text.docs?.replace('https://vueuse.org', '')
+          const docPath = `${this.extensionUri.path}/resources/vueuse${fnDocPath}index.md`
+          commands.executeCommand('markdown.showPreview', Uri.file(docPath))
           return
       }
     })
