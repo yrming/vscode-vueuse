@@ -23,6 +23,7 @@ export class DocPanel {
       const panel = window.createWebviewPanel('showDoc', fn.name, ViewColumn.One, {
         enableScripts: true
       })
+      panel.webview.postMessage({ command: 'showDoc', fn: fn })
 
       DocPanel.currentPanel = new DocPanel(panel, extensionUri, fn)
     }

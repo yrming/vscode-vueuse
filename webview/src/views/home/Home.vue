@@ -3,8 +3,8 @@ import { computed, ref } from 'vue'
 import { provideVSCodeDesignSystem, vsCodeCheckbox, vsCodeDivider } from '@vscode/webview-ui-toolkit'
 import { categoryNames, coreCategoryNames, addonCategoryNames, functions, type VueUseFunction } from '@vueuse/metadata'
 import Fuse from 'fuse.js'
-import { renderMarkdown, styledName } from './utils/common'
-import { vscode } from './utils/vscode'
+import { renderMarkdown, styledName } from '@/utils/common'
+import { vscode } from '@/utils/vscode'
 
 provideVSCodeDesignSystem().register(vsCodeCheckbox(), vsCodeDivider())
 
