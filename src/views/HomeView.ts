@@ -1,7 +1,6 @@
 import { VueUseFunction } from '@vueuse/metadata'
 import {
   CancellationToken,
-  commands,
   Uri,
   Webview,
   WebviewView,
@@ -9,6 +8,7 @@ import {
   WebviewViewResolveContext
 } from 'vscode'
 import { getUri } from '../utils/getUri'
+import { DocPanel } from './DocView'
 
 export class HomeViewProvider implements WebviewViewProvider {
   constructor(private readonly extensionUri: Uri) {}
@@ -64,13 +64,11 @@ export class HomeViewProvider implements WebviewViewProvider {
   private _setWebviewMessageListener(webview: Webview) {
     webview.onDidReceiveMessage((message: any) => {
       const command = message.command
-      const text = message.text as VueUseFunction
+      const fn = message.text as VueUseFunction
 
       switch (command) {
         case 'showDoc':
-          const fnDocPath = text.docs?.replace('https://vueuse.org', '')
-          const docPath = `${this.extensionUri.path}/resources/vueuse${fnDocPath}index.md`
-          commands.executeCommand('markdown.showPreview', Uri.file(docPath))
+          DocPanel.render(this.extensionUri, fn)
           return
       }
     })
