@@ -1,5 +1,5 @@
 import { ExtensionContext, window } from 'vscode'
-import { HomeViewProvider } from './views/HomeViewProvider'
+import { HomeViewProvider } from './views/HomeView'
 
 export function activate(context: ExtensionContext) {
   const homeViewProvider = new HomeViewProvider(context.extensionUri)
