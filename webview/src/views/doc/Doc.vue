@@ -1,25 +1,28 @@
 <script setup lang="ts">
-window.addEventListener('message', event => {
+import type { VueUseFunction } from '@vueuse/metadata'
+import { ref } from 'vue'
+import FunctionInfo from './components/FunctionInfo.vue'
 
-  const message = event.data; // The JSON data our extension sent
+const fn = ref('')
 
+window.addEventListener('message', (event) => {
+  const message = event.data
   switch (message.command) {
     case 'showDoc':
-      console.log(message.fn);
-      break;
+      fn.value = (message.fn as VueUseFunction).name
+      break
   }
-});
+})
 </script>
 
 <template>
-  <div class="doc">
-    this is doc page
+  <div class="doc" v-if="fn">
+    <FunctionInfo :fn="fn" />
   </div>
 </template>
 
-
 <style scoped>
 .doc {
-  color: red;
+
 }
 </style>
