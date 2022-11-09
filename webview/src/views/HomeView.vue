@@ -129,19 +129,32 @@ const result = computed(() => {
 
 <template>
   <div class="flex my-2" v-for="item in conditions" :key="item.name">
-    <div class="w-70px flex-shrink-0 text-sm op-80" :class="item.type === 'cate' ? 'py-2px' : 'py-4px'">
+    <div
+      class="w-70px flex-shrink-0 text-sm op-80"
+      :class="item.type === 'cate' ? 'py-2px' : 'py-4px'"
+    >
       {{ item.name }}
     </div>
     <div class="flex flex-wrap gap-2">
       <template v-if="item.type === 'cate'">
-        <div class="select-button" :class="cate === currentSelectedCate ? 'active' : ''" v-for="cate in item.data"
-          :key="cate" @click="setCurrentCate(cate)">
+        <div
+          class="select-button"
+          :class="cate === currentSelectedCate ? 'active' : ''"
+          v-for="cate in item.data"
+          :key="cate"
+          @click="setCurrentCate(cate)"
+        >
           {{ cate.replace('@', '') }}
         </div>
       </template>
       <template v-else-if="item.type === 'sort'">
-        <div class="select-button" :class="sort === currentSelectedSort ? 'active' : ''" v-for="sort in item.data"
-          :key="sort" @click="setCurrentSort(sort)">
+        <div
+          class="select-button"
+          :class="sort === currentSelectedSort ? 'active' : ''"
+          v-for="sort in item.data"
+          :key="sort"
+          @click="setCurrentSort(sort)"
+        >
           {{ sort }}
         </div>
       </template>
@@ -159,19 +172,32 @@ const result = computed(() => {
   <vscode-divider></vscode-divider>
   <div class="flex children:my-auto p-2">
     <i class="i-carbon-search mr-2 op-50 scale-120"></i>
-    <input class="search-input" type="text" role="search" placeholder="Search..." v-model="currentSearch" />
+    <input
+      class="search-input"
+      type="text"
+      role="search"
+      placeholder="Search..."
+      v-model="currentSearch"
+    />
   </div>
   <vscode-divider></vscode-divider>
 
   <div class="pt-2"></div>
 
   <div v-for="(fn, idx) in result" :key="fn.name">
-    <div class="mt-6 mb-4 text-base op-60" v-if="showCategory && fn.category !== result[idx - 1]?.category">
+    <div
+      class="mt-6 mb-4 text-base op-60"
+      v-if="showCategory && fn.category !== result[idx - 1]?.category"
+    >
       {{ fn.category }}
     </div>
     <div class="my-2 flex items-center text-sm">
-      <a v-bind="getLink(fn)" class="fn-name" @click="goDoc(fn)"
-        :class="fn.deprecated ? 'line-through !decoration-solid' : ''">
+      <a
+        v-bind="getLink(fn)"
+        class="fn-name"
+        @click="goDoc(fn)"
+        :class="fn.deprecated ? 'line-through !decoration-solid' : ''"
+      >
         <span v-html="styledName(fn.name)"></span>
         <i v-if="fn.external" class="i-carbon-launch opacity-80 text-xs ml-1" />
       </a>

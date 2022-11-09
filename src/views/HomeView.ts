@@ -8,7 +8,6 @@ import {
   WebviewViewResolveContext
 } from 'vscode'
 import { getUri } from '../utils/getUri'
-import { DocPanel } from './DocView'
 
 export class HomeViewProvider implements WebviewViewProvider {
   constructor(private readonly extensionUri: Uri) {}
@@ -52,9 +51,6 @@ export class HomeViewProvider implements WebviewViewProvider {
       const fn = message.text as VueUseFunction
 
       switch (command) {
-        case 'showDoc':
-          DocPanel.render(this.extensionUri, fn)
-          return
       }
     })
   }
