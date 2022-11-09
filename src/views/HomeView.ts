@@ -27,21 +27,8 @@ export class HomeViewProvider implements WebviewViewProvider {
   }
 
   private _getWebviewContent(webview: Webview, extensionUri: Uri) {
-    const stylesUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'home.css'])
-    const stylesUri2 = getUri(webview, extensionUri, [
-      'webview',
-      'dist',
-      'assets',
-      '_plugin-vue_export-helper.css'
-    ])
-    const scriptUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'home.js'])
-    const scriptUri2 = getUri(webview, extensionUri, [
-      'webview',
-      'dist',
-      'assets',
-      '_plugin-vue_export-helper.js'
-    ])
-
+    const stylesUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'index.css'])
+    const scriptUri = getUri(webview, extensionUri, ['webview', 'dist', 'assets', 'index.js'])
     return `
       <!DOCTYPE html>
       <html lang="en">
@@ -49,13 +36,11 @@ export class HomeViewProvider implements WebviewViewProvider {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
-          <link rel="stylesheet" type="text/css" href="${stylesUri2}">
           <title>VueUse</title>
         </head>
         <body>
           <div id="app"></div>
           <script type="module" src="${scriptUri}"></script>
-          <script type="module" src="${scriptUri2}"></script>
         </body>
       </html>
     `

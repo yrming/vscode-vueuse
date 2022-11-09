@@ -1,12 +1,25 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { provideVSCodeDesignSystem, vsCodeCheckbox, vsCodeDivider } from '@vscode/webview-ui-toolkit'
-import { categoryNames, coreCategoryNames, addonCategoryNames, functions, type VueUseFunction } from '@vueuse/metadata'
+import { useRouter } from 'vue-router'
+import {
+  provideVSCodeDesignSystem,
+  vsCodeCheckbox,
+  vsCodeDivider
+} from '@vscode/webview-ui-toolkit'
+import {
+  categoryNames,
+  coreCategoryNames,
+  addonCategoryNames,
+  functions,
+  type VueUseFunction
+} from '@vueuse/metadata'
 import Fuse from 'fuse.js'
 import { renderMarkdown, styledName } from '@/utils/common'
 import { vscode } from '@/utils/vscode'
 
 provideVSCodeDesignSystem().register(vsCodeCheckbox(), vsCodeDivider())
+
+const router = useRouter()
 
 const sortMethods = ['Category', 'Name', 'Updated']
 const filters = ['Has Component', 'Has Directive']
@@ -32,15 +45,15 @@ const conditions = [
     data: filters
   }
 ]
-
 const currentSelectedCate = ref('')
 const currentSelectedSort = ref(sortMethods[0])
 const hasComponent = ref(false)
 const hasDirective = ref(false)
 const currentSearch = ref('')
-
-const showCategory = computed(() => !currentSearch.value && (!currentSelectedSort.value || currentSelectedSort.value === 'Category'))
-
+const showCategory = computed(
+  () =>
+    !currentSearch.value && (!currentSelectedSort.value || currentSelectedSort.value === 'Category')
+)
 function setCurrentCate(cate: string) {
   currentSelectedCate.value = cate === currentSelectedCate.value ? '' : cate
 }
@@ -55,52 +68,59 @@ function toggleHasDirective() {
 }
 function goDoc(fn: VueUseFunction) {
   if (fn.external) {
+    console.log('fn.external')
     return
   }
-  vscode.postMessage({
-    command: "showDoc",
-    text: fn,
-  });
+  router.push({
+    name: 'doc',
+    params: {
+      fnName: fn.name
+    }
+  })
 }
 function getLink(fn: VueUseFunction) {
   if (fn.external) {
     return {
       href: fn.external,
-      target: '_blank',
+      target: '_blank'
     }
   }
   return {
-    href: `/${fn.package}/${fn.name}/`,
+    href: `/${fn.package}/${fn.name}/`
   }
 }
-
 const items = computed(() => {
-  let fn = functions.filter(i => !i.internal)
+  let fn = functions.filter((i) => !i.internal)
   if (hasComponent.value) {
-    fn = fn.filter(i => i.component)
+    fn = fn.filter((i) => i.component)
   }
   if (hasDirective.value) {
-    fn = fn.filter(i => i.directive)
+    fn = fn.filter((i) => i.directive)
   }
   if (!currentSelectedCate.value) {
     return fn
   }
-  return fn.filter(item => item.category === currentSelectedCate.value)
+  return fn.filter((item) => item.category === currentSelectedCate.value)
 })
-const fuse = computed(() => new Fuse(items.value, {
-  keys: ['name', 'description'],
-}))
+const fuse = computed(
+  () =>
+    new Fuse(items.value, {
+      keys: ['name', 'description']
+    })
+)
 const result = computed(() => {
   if (currentSearch.value) {
-    return fuse.value.search(currentSearch.value).map(i => i.item)
+    return fuse.value.search(currentSearch.value).map((i) => i.item)
   } else {
     const fns = [...items.value]
     if (currentSelectedSort.value === 'Updated') {
-      fns.sort((a, b) => (b.lastUpdated) || 0 - (a.lastUpdated || 0))
+      fns.sort((a, b) => b.lastUpdated || 0 - (a.lastUpdated || 0))
     } else if (currentSelectedSort.value === 'Name') {
       fns.sort((a, b) => a.name.localeCompare(b.name))
     } else {
-      fns.sort((a, b) => categoryNames.indexOf(a.category || '') - categoryNames.indexOf(b.category || ''))
+      fns.sort(
+        (a, b) => categoryNames.indexOf(a.category || '') - categoryNames.indexOf(b.category || '')
+      )
     }
     return fns
   }
@@ -109,7 +129,8 @@ const result = computed(() => {
 
 <template>
   <div class="flex my-2" v-for="item in conditions" :key="item.name">
-    <div class="w-70px flex-shrink-0 text-sm op-80" :class="item.type === 'cate' ? 'py-2px' : 'py-4px'">{{ item.name }}
+    <div class="w-70px flex-shrink-0 text-sm op-80" :class="item.type === 'cate' ? 'py-2px' : 'py-4px'">
+      {{ item.name }}
     </div>
     <div class="flex flex-wrap gap-2">
       <template v-if="item.type === 'cate'">
@@ -132,14 +153,13 @@ const result = computed(() => {
           {{ filters[1] }}
         </vscode-checkbox>
       </template>
-
     </div>
   </div>
 
   <vscode-divider></vscode-divider>
   <div class="flex children:my-auto p-2">
     <i class="i-carbon-search mr-2 op-50 scale-120"></i>
-    <input class="search-input" type="text" role="search" placeholder="Search..." v-model="currentSearch">
+    <input class="search-input" type="text" role="search" placeholder="Search..." v-model="currentSearch" />
   </div>
   <vscode-divider></vscode-divider>
 
@@ -160,12 +180,9 @@ const result = computed(() => {
     </div>
   </div>
   <div class="text-center pt-6" v-if="!result.length">
-    <div class="m2 op50 text-sm">
-      No result matched
-    </div>
+    <div class="m2 op50 text-sm">No result matched</div>
   </div>
 </template>
-
 <style scoped>
 .select-button {
   @apply cursor-pointer rounded text-sm px-2 py-0.5 bg-gray-400/5 hover: bg-gray-400/10 op-87 select-none;

@@ -1,16 +1,18 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import {functions} from '@vueuse/metadata'
 import type { VueUseFunction } from '@vueuse/metadata'
-import { ref } from 'vue'
-import FunctionInfo from './components/FunctionInfo.vue'
+import FunctionInfo from '@/components/FunctionInfo.vue'
 
-const fn = ref<VueUseFunction | null>(null)
+const route = useRoute()
 
-window.addEventListener('message', (event) => {
-  const message = event.data
-  switch (message.command) {
-    case 'showDoc':
-      fn.value = message.fn
-      break
+const fn = ref<VueUseFunction | null | undefined>(null)
+
+onMounted(() => {
+  const fnName = route.params.fnName
+  if (fnName) {
+    fn.value = functions.find(i => i.name === fnName)
   }
 })
 </script>
