@@ -16,7 +16,8 @@
     "@vueuse/core": "^9.4.0",
     "@vueuse/metadata": "^9.4.0",
     "fuse.js": "^6.6.2",
-    "vue": "^3.2.38"
+    "vue": "^3.2.38",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.9",
