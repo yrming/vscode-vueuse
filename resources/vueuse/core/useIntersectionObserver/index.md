@@ -78,4 +78,4 @@ function onIntersectionObserver([{ isIntersecting }]) {
 ```
 
 
-[IntersectionObserver MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
+<!-- [IntersectionObserver MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver) -->

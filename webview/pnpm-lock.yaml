@@ -26,7 +26,7 @@ specifiers:
   prettier: ^2.7.1
   typescript: ~4.7.4
   unocss: ^0.46.4
-  vite: ^3.0.9
+  vite: ^3.2.3
   vitest: ^0.23.0
   vue: ^3.2.38
   vue-router: ^4.1.5
@@ -1085,7 +1085,6 @@ packages:
     dependencies:
       '@vue/reactivity': 3.2.42
       '@vue/shared': 3.2.42
-    dev: false
 
   /@vue/runtime-dom/3.2.42:
     resolution: {integrity: sha512-i4OZblZQvFjJ/isNo+jrqXsjJgq4Nz0R/W2iNu40pTLJrikijYPaUOcOJcjVih9eL7zz101RJsbP8zKluQLqRA==}
@@ -1093,7 +1092,6 @@ packages:
       '@vue/runtime-core': 3.2.42
       '@vue/shared': 3.2.42
       csstype: 2.6.21
-    dev: false
 
   /@vue/server-renderer/3.2.42_vue@3.2.42:
     resolution: {integrity: sha512-xo6XMaJTuKmYRlnS53QN358j0pmZMFNtisLkzV7oXFww0bpkn2MzjkPt4YvOjMNto9NlI609xQKJboEk5nMu2A==}
@@ -1103,7 +1101,6 @@ packages:
       '@vue/compiler-ssr': 3.2.42
       '@vue/shared': 3.2.42
       vue: 3.2.42
-    dev: false
 
   /@vue/shared/3.2.38:
     resolution: {integrity: sha512-dTyhTIRmGXBjxJE+skC8tTWCGLCVc4wQgRRLt8+O9p5ewBAjoBwtCAkLPrtToSr1xltoe3st21Pv953aOZ7alg==}
@@ -1463,7 +1460,6 @@ packages:
 
   /csstype/2.6.21:
     resolution: {integrity: sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w==}
-    dev: false
 
   /data-urls/3.0.2:
     resolution: {integrity: sha512-Jy/tj3ldjZJo63sVAvg6LHt2mHvl4V6AgRAmNDtLdm7faqtsx+aJG42rsyCo9JCoRVKwPFzKlIPx3DIibwSIaQ==}
@@ -3398,7 +3394,6 @@ packages:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /ufo/0.8.6:
     resolution: {integrity: sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==}
@@ -3638,7 +3633,6 @@ packages:
       '@vue/runtime-dom': 3.2.42
       '@vue/server-renderer': 3.2.42_vue@3.2.42
       '@vue/shared': 3.2.42
-    dev: false
 
   /w3c-xmlserializer/3.0.0:
     resolution: {integrity: sha512-3WFqGEgSXIyGhOmAFtlicJNMjEps8b1MG31NCA0/vOF9+nKMUW1ckhi9cnNHmf88Rzw5V+dwIwsm2C7X8k9aQg==}
