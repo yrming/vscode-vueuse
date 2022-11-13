@@ -72,4 +72,7 @@ function goBack() {
   margin-top: 14px;
   font-weight: 500;
 }
+.md-render-container p {
+  opacity: 0.85;
+}
 </style>
