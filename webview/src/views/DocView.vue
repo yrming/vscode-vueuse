@@ -21,13 +21,14 @@ onMounted(() => {
   const fnName = route.params.fnName
   if (fnName) {
     fn.value = functions.find((i) => i.name === fnName)
-    
+
     const docs = import.meta.glob('../../../resources/vueuse/**/*.md', {
       as: 'raw',
       import: 'default',
-      eager: true,
+      eager: true
     })
-    const path = fn.value?.docs?.replace('https://vueuse.org', `../../../resources/vueuse`) + 'index.md';
+    const path =
+      fn.value?.docs?.replace('https://vueuse.org', `../../../resources/vueuse`) + 'index.md'
     let content = docs[path]
     const frontmatterEnds = content.indexOf('---\n\n') + 4
     const firstSubheader = content.search(/\n## \w/)
@@ -46,19 +47,28 @@ function goBack() {
 
 <template>
   <div class="doc m-auto" v-if="fn">
-    <div class="h-8 flex items-center justify-between">
-      <span class="cursor-pointer w-8 h-8 flex items-center" @click="goBack">
-        <i class="i-carbon:arrow-left op-85 text-xs scale-140 inline-block" />
-      </span>
-      <span class="text-base op-90 mx-4">{{ fn.name }}</span>
-      <span class="op-85 cursor-pointer py-2">Return to top</span>
+    <div class="nav">
+      <div class="h-8 flex items-center justify-between">
+        <span class="cursor-pointer w-8 h-8 flex items-center" @click="goBack">
+          <i class="i-carbon:arrow-left op-85 text-xs scale-140 inline-block" />
+        </span>
+        <span class="text-base op-90 mx-4">{{ fn.name }}</span>
+        <span class="op-85 cursor-pointer py-2">Return to top</span>
+      </div>
+      <vscode-divider></vscode-divider>
     </div>
-    <vscode-divider></vscode-divider>
     <FunctionInfo :fn="fn.name" />
     <p class="text-base op-85" v-html="renderMarkdown(fn.description)"></p>
     <div class="md-render-container" v-html="md.render(doc)"></div>
   </div>
 </template>
+
+<style scoped>
+.nav {
+  background-color: var(--vscode-sideBar-background);
+  @apply z-1 sticky left-0 right-0 top-0;
+}
+</style>
 
 <style>
 .md-render-container h2 {
