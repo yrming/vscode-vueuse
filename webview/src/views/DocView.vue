@@ -43,6 +43,12 @@ function goBack() {
     name: 'home'
   })
 }
+function handleReturnToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 </script>
 
 <template>
@@ -53,7 +59,7 @@ function goBack() {
           <i class="i-carbon:arrow-left op-85 text-xs scale-140 inline-block" />
         </span>
         <span class="text-base op-90 mx-4">{{ fn.name }}</span>
-        <span class="op-85 cursor-pointer py-2">Return to top</span>
+        <span class="op-85 cursor-pointer py-2" @click="handleReturnToTop">Return to top</span>
       </div>
       <vscode-divider></vscode-divider>
     </div>
