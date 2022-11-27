@@ -23,9 +23,11 @@ specifiers:
   fuse.js: ^6.6.2
   jsdom: ^20.0.0
   markdown-it: ^13.0.1
+  markdown-it-prism: ^2.3.0
   npm-run-all: ^4.1.5
   pinia: ^2.0.21
   prettier: ^2.7.1
+  prism-theme-vars: ^0.2.4
   typescript: ~4.7.4
   unocss: ^0.46.4
   vite: ^3.2.3
@@ -41,6 +43,7 @@ dependencies:
   fuse.js: 6.6.2
   markdown-it: 13.0.1
   pinia: 2.0.23_4gmby6tu35uijtb3cxou5mh53y
+  prism-theme-vars: 0.2.4
   vue: 3.2.42
   vue-router: 4.1.6_vue@3.2.42
 
@@ -62,6 +65,7 @@ devDependencies:
   eslint: 8.27.0
   eslint-plugin-vue: 9.7.0_eslint@8.27.0
   jsdom: 20.0.2
+  markdown-it-prism: 2.3.0
   npm-run-all: 4.1.5
   prettier: 2.7.1
   typescript: 4.7.4
@@ -2673,6 +2677,13 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
+  /markdown-it-prism/2.3.0:
+    resolution: {integrity: sha512-ePtHY80gZyeje4bn3R3SL0jpd1C9HFaYffJW2Ma0YD+tspqa2v9TuVwUyFwboFu4jnFNcO8oPQROgbcYJbmBvw==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      prismjs: 1.29.0
+    dev: true
+
   /markdown-it/13.0.1:
     resolution: {integrity: sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q==}
     hasBin: true
@@ -3040,6 +3051,15 @@ packages:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: true
+
+  /prism-theme-vars/0.2.4:
+    resolution: {integrity: sha512-B3Pht+GCT87sZph7hMRLlCQXzCM0awW7Rhk08RavpqRW4LEQOeqN0uMG4QCWkul2tr8PB61YAOJGUrEW+1uuJA==}
+    dev: false
+
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
     dev: true
 
   /psl/1.9.0:

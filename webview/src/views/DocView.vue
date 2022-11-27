@@ -5,6 +5,8 @@ import { functions } from '@vueuse/metadata'
 import type { VueUseFunction } from '@vueuse/metadata'
 import { provideVSCodeDesignSystem, vsCodeDivider } from '@vscode/webview-ui-toolkit'
 import MarkdownIt from 'markdown-it'
+import prism from 'markdown-it-prism'
+import 'prism-theme-vars/base.css'
 import FunctionInfo from '@/components/FunctionInfo.vue'
 import { renderMarkdown } from '@/utils/common'
 
@@ -13,6 +15,7 @@ provideVSCodeDesignSystem().register(vsCodeDivider())
 const route = useRoute()
 const router = useRouter()
 const md = new MarkdownIt()
+md.use(prism)
 
 const fn = ref<VueUseFunction | null | undefined>(null)
 const doc = ref('')
@@ -77,17 +80,56 @@ function handleReturnToTop() {
 </style>
 
 <style>
+body:not(vscode-dark) {
+  --prism-foreground: #393a34;
+  --prism-background: #f8f8f8;
+
+  --prism-comment: #758575;
+  --prism-namespace: #444444;
+  --prism-string: #bc8671;
+  --prism-punctuation: #80817d;
+  --prism-literal: #36acaa;
+  --prism-keyword: #248459;
+  --prism-function: #849145;
+  --prism-deleted: #9a050f;
+  --prism-class: #2b91af;
+  --prism-builtin: #800000;
+  --prism-property: #ce9178;
+  --prism-regex: #ad502b;
+}
+
+body.vscode-dark {
+  --prism-foreground: #d4d4d4;
+  --prism-background: #1e1e1e;
+
+  --prism-namespace: #aaaaaa;
+  --prism-comment: #758575;
+  --prism-namespace: #444444;
+  --prism-string: #ce9178;
+  --prism-punctuation: #d4d4d4;
+  --prism-literal: #36acaa;
+  --prism-keyword: #38a776;
+  --prism-function: #dcdcaa;
+  --prism-deleted: #9a050f;
+  --prism-class: #4ec9b0;
+  --prism-builtin: #d16969;
+  --prism-property: #ce9178;
+  --prism-regex: #ad502b;
+}
+
 .md-render-container h2 {
   opacity: 0.85;
   margin-top: 24px;
   margin-bottom: 14px;
   font-weight: 500;
 }
+
 .md-render-container h3 {
   opacity: 0.85;
   margin-top: 14px;
   font-weight: 500;
 }
+
 .md-render-container p {
   opacity: 0.85;
 }
