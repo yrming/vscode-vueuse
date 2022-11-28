@@ -19,6 +19,7 @@
     "markdown-it": "^13.0.1",
     "pinia": "^2.0.21",
     "prism-theme-vars": "^0.2.4",
+    "prismjs": "^1.29.0",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
@@ -28,6 +29,7 @@
     "@types/jsdom": "^20.0.0",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^16.11.56",
+    "@types/prismjs": "^1.26.0",
     "@types/vscode-webview": "^1.57.0",
     "@unocss/preset-icons": "^0.46.4",
     "@unocss/transformer-directives": "^0.46.4",
@@ -40,7 +42,6 @@
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.0",
-    "markdown-it-prism": "^2.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "typescript": "~4.7.4",

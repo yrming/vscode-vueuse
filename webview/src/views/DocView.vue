@@ -5,7 +5,8 @@ import { functions } from '@vueuse/metadata'
 import type { VueUseFunction } from '@vueuse/metadata'
 import { provideVSCodeDesignSystem, vsCodeDivider } from '@vscode/webview-ui-toolkit'
 import MarkdownIt from 'markdown-it'
-import prism from 'markdown-it-prism'
+import Prism from 'prismjs'
+import 'prismjs/components/prism-typescript'
 import 'prism-theme-vars/base.css'
 import FunctionInfo from '@/components/FunctionInfo.vue'
 import { renderMarkdown } from '@/utils/common'
@@ -14,8 +15,13 @@ provideVSCodeDesignSystem().register(vsCodeDivider())
 
 const route = useRoute()
 const router = useRouter()
-const md = new MarkdownIt()
-md.use(prism)
+
+const md = new MarkdownIt({
+  highlight: function (code, lang) {
+    const html = Prism.highlight(code, Prism.languages.ts, 'ts')
+    return `<pre class="language-${lang}">${html}</pre>`
+  }
+})
 
 const fn = ref<VueUseFunction | null | undefined>(null)
 const doc = ref('')
@@ -80,7 +86,8 @@ function handleReturnToTop() {
 </style>
 
 <style>
-body.vscode-light, body.vscode-high-contrast-light {
+body.vscode-light,
+body.vscode-high-contrast-light {
   --prism-foreground: #393a34 !important;
   --prism-background: #f8f8f8 !important;
 
@@ -98,7 +105,8 @@ body.vscode-light, body.vscode-high-contrast-light {
   --prism-regex: #ad502b !important;
 }
 
-body.vscode-dark, body.vscode-high-contrast {
+body.vscode-dark,
+body.vscode-high-contrast {
   --prism-foreground: #d4d4d4;
   --prism-background: #1e1e1e;
 
