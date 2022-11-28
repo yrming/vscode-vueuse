@@ -80,25 +80,25 @@ function handleReturnToTop() {
 </style>
 
 <style>
-body:not(vscode-dark) {
-  --prism-foreground: #393a34;
-  --prism-background: #f8f8f8;
+body.vscode-light, body.vscode-high-contrast-light {
+  --prism-foreground: #393a34 !important;
+  --prism-background: #f8f8f8 !important;
 
-  --prism-comment: #758575;
-  --prism-namespace: #444444;
-  --prism-string: #bc8671;
-  --prism-punctuation: #80817d;
-  --prism-literal: #36acaa;
-  --prism-keyword: #248459;
-  --prism-function: #849145;
-  --prism-deleted: #9a050f;
-  --prism-class: #2b91af;
-  --prism-builtin: #800000;
-  --prism-property: #ce9178;
-  --prism-regex: #ad502b;
+  --prism-comment: #758575 !important;
+  --prism-namespace: #444444 !important;
+  --prism-string: #bc8671 !important;
+  --prism-punctuation: #80817d !important;
+  --prism-literal: #36acaa !important;
+  --prism-keyword: #248459 !important;
+  --prism-function: #849145 !important;
+  --prism-deleted: #9a050f !important;
+  --prism-class: #2b91af !important;
+  --prism-builtin: #800000 !important;
+  --prism-property: #ce9178 !important;
+  --prism-regex: #ad502b !important;
 }
 
-body.vscode-dark {
+body.vscode-dark, body.vscode-high-contrast {
   --prism-foreground: #d4d4d4;
   --prism-background: #1e1e1e;
 
