@@ -11,6 +11,8 @@ Browse VueUse Documentation in VS Code
 
 <br>
 
+**Status**: Preview
+
 ## Features
 
 - View functions in the side panel
