@@ -21,8 +21,8 @@ Browse VueUse Documentation in VS Code
 <br>
 
 <p align="center">
-<img width="450" src="resources/snapshot1.png">
-<img width="450" src="resources/snapshot2.png">
+<img width="350" src="resources/snapshot1.png">
+<img width="350" src="resources/snapshot2.png">
 </p>
 
 ## License
