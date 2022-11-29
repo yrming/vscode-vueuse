@@ -15,7 +15,7 @@ Browse VueUse Documentation in VS Code
 
 ## Why
 
-- I often use [VueUse](https://vueuse.org/) when developing Vue applications, but whenever this time, i need to shift my sight from VSCode to browser, which will interrupt my thinking, so i developed this extension, its interaction is consistent with the official website , because of this, you can quickly find the VueUse function you want while staying focused.
+- I often use [VueUse](https://vueuse.org/) when developing Vue applications, but whenever this time, i need to shift my sight from VSCode to browser, which will interrupt my thinking, so i developed this extension, its interaction is consistent with the official website, because of this, you can quickly find the VueUse function you want while staying focused.
 - The official extension seems to be no longer maintained.
 
 ## Features
